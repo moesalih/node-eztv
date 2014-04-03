@@ -2,15 +2,12 @@
   "name": "eztv",
   "version": "0.0.1",
   "description": "EZTV API",
+  "keywords": ["eztv", "api", "torrents"],
   "main": "index.js",
   "repository": {
     "type": "git",
     "url": "https://github.com/moesalih/node-eztv.git"
   },
-  "keywords": [
-    "eztv",
-    "api"
-  ],
   "author": "Moe Salih <moe.salih@gmail.com>",
   "license": "MIT",
   "bugs": {
