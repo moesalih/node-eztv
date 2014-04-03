@@ -32,7 +32,7 @@ self.getShows = function(options, callback) {
 				
 				if (options && options.query) {
 					if (show.title.toLowerCase().search(options.query.toLowerCase()) >= 0) {
-						console.log(show.title);
+						//console.log(show.title);
 						list.push(show);
 					}
 				}
