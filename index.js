@@ -64,18 +64,23 @@ self.getShowEpisodes = function(showId, callback) {
 			$elements.each(function(i, e) {
 			
 				var episode = {};
+				
 				episode.url = $(e).find("td").eq(1).find("a").attr("href");
+				var urlRegex = episode.url.match(/\/ep\/(\d+)\/.*/);
+				episode.id = parseInt(urlRegex[1]);
+				
 				episode.title = $(e).find("td").eq(1).find("a").text();
-				var regex = episode.title.match(/(.+) S?(\d+)[Ex](\d+)(.*)/);
-				if (regex) {
-					episode.show = regex[1];
-					episode.seasonNumber = parseInt(regex[2]);
-					episode.episodeNumber = parseInt(regex[3]);
-					episode.extra = regex[4].trim();
+				var titleRegex = episode.title.match(/(.+) S?(\d+)[Ex](\d+)(.*)/);
+				if (titleRegex) {
+					episode.show = titleRegex[1];
+					episode.seasonNumber = parseInt(titleRegex[2]);
+					episode.episodeNumber = parseInt(titleRegex[3]);
+					episode.extra = titleRegex[4].trim();
 				}
 				else {
 					console.log("unparsed episode: " + episode.title);
 				}
+				
 				episode.magnet = $(e).find("td").eq(2).find("a.magnet").attr("href");
 				episode.torrentURL = $(e).find("td").eq(2).find("a.download_1").attr("href");
 				
