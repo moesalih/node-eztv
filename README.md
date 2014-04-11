@@ -69,10 +69,12 @@ Each result is an object:
 {
 	episodeNumber: 17,
 	extra: "HDTV x264-LOL",
+	id: 52823,
 	magnet: "magnet:?xt=urn:btih:64DZYZWMUAVLIWJUXGDIK4QGAAIN7SL6&dn=The.Big.Bang.Theory.S07E17.HDTV.x264-LOL&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:80&tr=udp://open.demonii.com:80&tr=udp://tracker.coppersurfer.tk:80",
 	seasonNumber: 7,
 	show: "The Big Bang Theory",
 	title: "The Big Bang Theory S07E17 HDTV x264-LOL",
 	torrentURL: "http://piratebaytorrents.info/9715961/The_Big_Bang_Theory_S07E17_HDTV_x264-LOL.9715961.TPB.torrent",
-	url: "/ep/52823/the-big-bang-theory-s07e17-hdtv-x264-lol/"}
+	url: "/ep/52823/the-big-bang-theory-s07e17-hdtv-x264-lol/"
+}
 ```
