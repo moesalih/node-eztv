@@ -1,8 +1,12 @@
 {
   "name": "eztv",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "EZTV API",
-  "keywords": ["eztv", "api", "torrents"],
+  "keywords": [
+    "eztv",
+    "api",
+    "torrents"
+  ],
   "main": "index.js",
   "repository": {
     "type": "git",
