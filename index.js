@@ -58,10 +58,15 @@ self.getShowEpisodes = function(showId, callback) {
 
 		if (!error && response.statusCode == 200) {			 
 			
-			var list = [];
+			var result = {
+				episodes: []
+			};
+			
 			var $ = cheerio.load(body);
-			var $elements = $("table.forum_header_noborder tr[name=hover]");
-			$elements.each(function(i, e) {
+			result.title = $("td.section_post_header").eq(0).find("b").text();			
+			
+			var $episodes = $("table.forum_header_noborder tr[name=hover]");
+			$episodes.each(function(i, e) {
 			
 				var episode = {};
 				
@@ -84,11 +89,11 @@ self.getShowEpisodes = function(showId, callback) {
 				episode.magnet = $(e).find("td").eq(2).find("a.magnet").attr("href");
 				episode.torrentURL = $(e).find("td").eq(2).find("a.download_1").attr("href");
 				
-				list.push(episode);						
+				result.episodes.push(episode);						
 				
 			});
 
-			if (callback) callback(null, list);
+			if (callback) callback(null, result);
 		
 		}
 		else {
