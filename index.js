@@ -59,6 +59,7 @@ self.getShowEpisodes = function(showId, callback) {
 		if (!error && response.statusCode == 200) {			 
 			
 			var result = {
+				id: showId,
 				episodes: []
 			};
 			
