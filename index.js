@@ -76,12 +76,13 @@ self.getShowEpisodes = function(showId, callback) {
 				episode.id = parseInt(urlRegex[1]);
 				
 				episode.title = $(e).find("td").eq(1).find("a").text();
-				var titleRegex = episode.title.match(/(.+) S?(\d+)[Ex](\d+)(.*)/);
+				var titleRegex = episode.title.match(/(.+) s?(\d+)[ex](\d+)(e(\d+))?(.*)/i);
 				if (titleRegex) {
 					episode.show = titleRegex[1];
 					episode.seasonNumber = parseInt(titleRegex[2]);
 					episode.episodeNumber = parseInt(titleRegex[3]);
-					episode.extra = titleRegex[4].trim();
+					episode.episodeNumber2 = parseInt(titleRegex[5]);
+					episode.extra = titleRegex[6].trim();
 				}
 				else {
 					console.log("unparsed episode: " + episode.title);
