@@ -63,14 +63,26 @@ Returns a list of episodes for a given show.
 - `error`: Error object or null.
 - `results`: Array of episodes.
 
-Each result is an object:
+**Returns:**
+
+```js
+{
+	episodes: [...],
+	id: 23,
+	title: "The Big Bang Theory"}
+```
+
+Each episode is an object:
 
 ```js
 {
 	episodeNumber: 17,
+	episodeNumber2: null,
 	extra: "HDTV x264-LOL",
 	id: 52823,
 	magnet: "magnet:?xt=urn:btih:64DZYZWMUAVLIWJUXGDIK4QGAAIN7SL6&dn=The.Big.Bang.Theory.S07E17.HDTV.x264-LOL&tr=udp://tracker.openbittorrent.com:80&tr=udp://tracker.publicbt.com:80&tr=udp://tracker.istole.it:80&tr=udp://open.demonii.com:80&tr=udp://tracker.coppersurfer.tk:80",
+	proper: false,
+	repack: false,
 	seasonNumber: 7,
 	show: "The Big Bang Theory",
 	title: "The Big Bang Theory S07E17 HDTV x264-LOL",
