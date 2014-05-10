@@ -83,6 +83,8 @@ self.getShowEpisodes = function(showId, callback) {
 					episode.episodeNumber = parseInt(titleRegex[3]);
 					episode.episodeNumber2 = parseInt(titleRegex[5]);
 					episode.extra = titleRegex[6].trim();
+					episode.proper = episode.extra.toLowerCase().indexOf("proper") >= 0;
+					episode.repack = episode.extra.toLowerCase().indexOf("repack") >= 0;
 				}
 				else {
 					console.log("unparsed episode: " + episode.title);
