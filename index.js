@@ -20,6 +20,10 @@ self.getShows = function(options, callback) {
 				var show = {};
 				show.url = $(e).find("td").eq(0).find("a").attr("href");
 				var regex = show.url.match(/\/shows\/(\d+)\/([^\/]+)/);
+				if (!regex) {
+					//console.log("Unparsed show: " + show.url);
+					return;
+				}
 				show.id = parseInt(regex[1]);
 				show.slug = regex[2];
 				
@@ -87,7 +91,7 @@ self.getShowEpisodes = function(showId, callback) {
 					episode.repack = episode.extra.toLowerCase().indexOf("repack") >= 0;
 				}
 				else {
-					console.log("unparsed episode: " + episode.title);
+					//console.log("unparsed episode: " + episode.title);
 				}
 				
 				episode.magnet = $(e).find("td").eq(2).find("a.magnet").attr("href");
