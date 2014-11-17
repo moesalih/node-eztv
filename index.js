@@ -19,6 +19,9 @@ self.getShows = function(options, callback) {
 			
 				var show = {};
 				show.url = $(e).find("td").eq(0).find("a").attr("href");
+				if (!show.url) {
+					return;
+				}
 				var regex = show.url.match(/\/shows\/(\d+)\/([^\/]+)/);
 				if (!regex) {
 					//console.log("Unparsed show: " + show.url);
