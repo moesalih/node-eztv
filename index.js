@@ -35,7 +35,7 @@ self.getShows = function(options, callback) {
 					title = "The " + S(title).chompRight(", The").s;
 				}
 				show.title = title;
-				show.status = $(e).find("td").eq(1).find("font").attr("class");
+				show.status = $(e).find("td").eq(2).find("font").attr("class");
 				
 				if (options && options.query) {
 					if (show.title.toLowerCase().search(options.query.toLowerCase()) >= 0) {
