@@ -8,7 +8,7 @@ var self = module.exports;
 
 self.getShows = function(options, callback) {
 	
-	request("http://eztv.it/showlist/", function (error, response, body) {
+	request("https://eztv.ch/showlist/", function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {			 
 			
@@ -61,7 +61,7 @@ self.getShows = function(options, callback) {
 
 self.getShowEpisodes = function(showId, callback) {
 	
-	request("http://eztv.it/shows/" + showId + "/", function (error, response, body) {
+	request("https://eztv.ch/shows/" + showId + "/", function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {			 
 			
