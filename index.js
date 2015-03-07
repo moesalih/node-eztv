@@ -3,12 +3,15 @@ var cheerio = require('cheerio');
 var S = require('string');
 
 
+//var urlRoot = "http://eztv.ch/";
+var urlRoot = "https://eztv-proxy.net/";
+
 
 var self = module.exports;
 
 self.getShows = function(options, callback) {
 	
-	request("http://eztv.it/showlist/", function (error, response, body) {
+	request(urlRoot + "showlist/", function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {			 
 			
@@ -61,7 +64,7 @@ self.getShows = function(options, callback) {
 
 self.getShowEpisodes = function(showId, callback) {
 	
-	request("http://eztv.it/shows/" + showId + "/", function (error, response, body) {
+	request(urlRoot + "shows/" + showId + "/", function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {			 
 			
@@ -79,6 +82,7 @@ self.getShowEpisodes = function(showId, callback) {
 				var episode = {};
 				
 				episode.url = $(e).find("td").eq(1).find("a").attr("href");
+				if (!episode.url) return;
 				var urlRegex = episode.url.match(/\/ep\/(\d+)\/.*/);
 				episode.id = parseInt(urlRegex[1]);
 				
