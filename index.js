@@ -13,13 +13,13 @@ self.getShows = function(options, callback) {
 	
 	request(urlRoot + "showlist/", function (error, response, body) {
 
-		if (!error && response.statusCode == 200) {			 
+		if (!error && response.statusCode == 200) {
 			
 			var list = [];
 			var $ = cheerio.load(body);
-			var $elements = $("table.forum_header_border tr[name=hover]");
+			var $elements = $("table.header_brd tr[name=hover]");
 			$elements.each(function(i, e) {
-			
+
 				var show = {};
 				show.url = $(e).find("td").eq(1).find("a").attr("href");
 				if (!show.url) {
@@ -56,6 +56,7 @@ self.getShows = function(options, callback) {
 		
 		}
 		else {
+			console.log("Error getting shows", error, response);
 			if (callback) callback(new Error("Error getting shows"), null);
 		}
 	});
@@ -76,7 +77,7 @@ self.getShowEpisodes = function(showId, callback) {
 			var $ = cheerio.load(body);
 			result.title = $("td.section_post_header").eq(0).find("b").text();			
 			
-			var $episodes = $("table.forum_header_noborder tr[name=hover]");
+			var $episodes = $("table.header_noborder tr[name=hover]");
 			$episodes.each(function(i, e) {
 			
 				var episode = {};
