@@ -3,8 +3,8 @@ var cheerio = require('cheerio');
 var S = require('string');
 
 
-//var urlRoot = "http://eztv.ch/";
-var urlRoot = "https://eztv-proxy.net/";
+var urlRoot = "http://eztv.ch/";
+//var urlRoot = "https://eztv-proxy.net/";
 
 
 var self = module.exports;
@@ -14,12 +14,12 @@ self.getShows = function(options, callback) {
 	request(urlRoot + "showlist/", function (error, response, body) {
 
 		if (!error && response.statusCode == 200) {
-			
+
 			var list = [];
 			var $ = cheerio.load(body);
-			var $elements = $("table.header_brd tr[name=hover]");
+			var $elements = $("table.forum_header_border tr[name=hover]");
 			$elements.each(function(i, e) {
-
+				
 				var show = {};
 				show.url = $(e).find("td").eq(1).find("a").attr("href");
 				if (!show.url) {
@@ -39,7 +39,7 @@ self.getShows = function(options, callback) {
 				}
 				show.title = title;
 				show.status = $(e).find("td").eq(2).find("font").attr("class");
-				
+
 				if (options && options.query) {
 					if (show.title.toLowerCase().search(options.query.toLowerCase()) >= 0) {
 						//console.log(show.title);
@@ -77,7 +77,7 @@ self.getShowEpisodes = function(showId, callback) {
 			var $ = cheerio.load(body);
 			result.title = $("td.section_post_header").eq(0).find("b").text();			
 			
-			var $episodes = $("table.header_noborder tr[name=hover]");
+			var $episodes = $("table.forum_header_noborder tr[name=hover]");
 			$episodes.each(function(i, e) {
 			
 				var episode = {};
