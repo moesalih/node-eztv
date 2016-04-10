@@ -2,7 +2,6 @@
 
 var request = require('request');
 var cheerio = require('cheerio');
-var S = require('string');
 
 function _validateQuality(targets, quality){
 	var i = 0;
@@ -54,9 +53,9 @@ function _getValidQualities(target){
 	return targetArray;
 }
 
-var EZTVClient = module.exports = function EZTVClient(url){
+function EZTVClient(url){
 	if(!url)
-		this.url = "https://eztv.ch";
+		this.url = "https://eztv.ag";
 	else
 		this.url = url;
 };
@@ -167,3 +166,5 @@ Show.prototype.getShowEpisodes = function(qualityRequest, callback) {
 		}
 	}.bind(this));
 };
+
+module.exports = EZTVClient;
