@@ -103,7 +103,8 @@ self.getShowEpisodes = function(showId, callback) {
 				else {
 					//console.log("unparsed episode: " + episode.title);
 				}
-				
+
+				episode.size = String($(e).find("td").eq(3).text());
 				episode.magnet = $(e).find("td").eq(2).find("a.magnet").attr("href");
 				episode.torrentURL = $(e).find("td").eq(2).find("a.download_1").attr("href");
 				
