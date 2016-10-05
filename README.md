@@ -2,6 +2,11 @@ eztv
 ========
 EZTV API module for Node.js
 
+[![Build Status](https://travis-ci.org/moesalih/node-eztv.svg?branch=master)](https://travis-ci.org/moesalih/node-eztv)
+[![NPM version](https://badge.fury.io/js/eztv.svg)](http://badge.fury.io/js/eztv)
+[![Dependency Status](https://img.shields.io/david/moesalih/node-eztv.svg)](https://david-dm.org/moesalih/node-eztv)
+[![npm](https://img.shields.io/npm/dm/eztv.svg?maxAge=2592000)]()
+
 ### Install
 ```bash
 npm install eztv --save
