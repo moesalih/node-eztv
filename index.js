@@ -3,7 +3,7 @@ var cheerio = require('cheerio');
 var S = require('string');
 
 
-var urlRoot = "https://eztv.ch/";
+var urlRoot = "https://eztv.ag/";
 //var urlRoot = "https://eztv-proxy.net/";
 
 
