@@ -18,7 +18,7 @@ import eztv from 'eztv';
 
 eztv.getShows({ query: 'big bang' }, (error, results) => {
   // Do stuff...
-}
+});
 ```
 
 ### Methods
