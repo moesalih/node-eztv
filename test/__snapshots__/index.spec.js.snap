@@ -1,22 +1,39 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`EZTV should error when show episodes queried with no arg 1`] = `[Error: Error getting show episodes: Error: getShowEpisodes show id argument must be a number]`;
+
 exports[`EZTV should get show episodes 1`] = `
 Object {
-  "episodes": Array [],
-  "id": Object {
-    "query": "sherlock",
-  },
-  "showTitle": "",
+  "episodeNumber": 3,
+  "episodeNumber2": NaN,
+  "episodeTitle": "Sherlock S04E03 The Final Problem INTERNAL 720p HDTV x264-DEADPOOL [eztv]",
+  "id": 458921,
+  "magnet": "magnet:?xt=urn:btih:d6997825e6c25b56d21215ee48057d3486d54d44&dn=Sherlock.S04E03.The.Final.Problem.INTERNAL.720p.HDTV.x264-DEADPOOL%5Beztv%5D.mkv%5Beztv%5D&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A80&tr=udp%3A%2F%2Fglotorrents.pw%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Fexodus.desync.com%3A6969",
+  "proper": false,
+  "repack": false,
+  "seasonNumber": 4,
+  "show": "Sherlock",
+  "size": "1.16 GB",
+  "torrentURL": "https://zoink.ch/torrent/Sherlock.S04E03.The.Final.Problem.INTERNAL.720p.HDTV.x264-DEADPOOL[eztv].mkv.torrent",
 }
 `;
 
-exports[`EZTV should get shows 1`] = `
-Array [
-  Object {
-    "id": 376,
-    "slug": "sherlock",
-    "status": undefined,
-    "url": "/shows/376/sherlock/",
-  },
-]
+exports[`EZTV should get shows list 1`] = `
+Object {
+  "id": 449,
+  "slug": "10-oclock-live",
+  "status": "ended",
+  "title": "10 O'Clock Live",
+  "url": "/shows/449/10-oclock-live/",
+}
+`;
+
+exports[`EZTV should get shows with query param 1`] = `
+Object {
+  "id": 376,
+  "slug": "sherlock",
+  "status": "pending",
+  "title": "Sherlock",
+  "url": "/shows/376/sherlock/",
+}
 `;

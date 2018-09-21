@@ -9,30 +9,35 @@ EZTV API module for Node.js
 
 ### Install
 ```bash
-npm install eztv --save
+npm install eztv
 ```
 
 ### Usage
 ```js
 import eztv from 'eztv';
 
-const [firstShow] = await eztv.getShows({ query: 'big bang' });
-console.log(firstShow);
+const [firstShow, ...shows] = await eztv.getShows();
+console.log(firstShow, shows);
+
+const show = await eztv.getShows({ query: 'big bang' });
+console.log(show);
+
+const [firstEpisode] = await eztv.getShowEpisodes(376, 'sherlock');
+console.log(firstEpisode);
 ```
 
-### Methods
-#### `getShows(options, callback)`
+#### `getShow(options)`
 
-Returns a list of shows.
+Returns a promise containing a list of shows from eztv
 
 `options`: An optional options object. Currently supports:
 
 - `query`: Show title to search for. If this option is ommited, all shows are returned.
 
-`callback`: A function that takes two parameters:
+`showId`: The show ID.
 
 - `error`: Error object or null.
-- `results`: Array of shows. 
+- `results`: Array of episodes.
 
 Each result is an object:
 
@@ -46,13 +51,12 @@ Each result is an object:
 }
 ```
 
-#### `getShowEpisodes(showId, callback)`
+#### `getShowEpisodes(showId)`
 
-Returns a list of episodes for a given show.
+Returns a promise containing a list of episodes for a given show.
 
-`showId`: The show ID.
-
-`callback`: A function that takes two parameters:
+`showId`: The show ID, which is a number. an example show id is `376`
+`showName`: The show name, which is a string. an example show name is 'sherlock'
 
 - `error`: Error object or null.
 - `results`: Array of episodes.

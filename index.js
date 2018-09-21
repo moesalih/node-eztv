@@ -1,17 +1,16 @@
 import cheerio from 'cheerio';
 import fetch from 'isomorphic-fetch';
 
-const urlRoot = 'https://eztv.ch';
+const urlRoot = 'https://eztv.ag';
 // const urlRoot = 'https://eztv-proxy.net';
 
 export async function getShows(options = {}) {
   try {
-    const results = await fetch(`${urlRoot}/showlist/`).then(res => res.text());
-    const list = [];
+    const results = await fetch(`${urlRoot}/showlist`).then(res => res.text());
     const $ = cheerio.load(results);
     const $elements = $('table.forum_header_border tr[name=hover]');
 
-    $elements.each((i, e) => {
+    const shows = $elements.map((i, e) => {
       const url = $(e).find('td').eq(0).find('a')
         .attr('href');
       if (!url) {
@@ -25,37 +24,42 @@ export async function getShows(options = {}) {
       const slug = regex[2];
 
       const title = $(e).find('td').eq(0).text();
-      // if (S(title).endsWith(', The')) {
-      //   title = `The ${S(title).chompRight(', The').s}`;
-      // }
-      const status = $(e).find('td').eq(2).find('font')
+      const status = $(e).find('td').eq(1).find('font')
         .attr('class');
 
-      const show = {
+      return {
+        title,
         id,
         slug,
         url,
         status
       };
+    }).get();
 
-      if (options && options.query) {
-        if (title.toLowerCase().search(options.query.toLowerCase()) >= 0) {
-          list.push(show);
-        }
-      } else {
-        list.push(show);
+    if (options && options.query) {
+      const lowercaseQuery = options.query.toLowerCase();
+      const foundShow = shows.find(e => e.title && e.title.toLowerCase().includes(lowercaseQuery));
+      if (foundShow) {
+        return foundShow;
       }
-    });
+    }
 
-    return list;
+    return shows;
   } catch (error) {
     throw new Error(`Error getting shows: ${error}`);
   }
 }
 
-export async function getShowEpisodes(showId) {
+export async function getShowEpisodes(showId, showName) {
   try {
-    const results = await fetch(`${urlRoot}/showlist/`).then(res => res.text());
+    if (typeof showId !== 'number' && !(showId instanceof Number)) {
+      throw new Error('getShowEpisodes show id argument must be a number');
+    }
+    if (typeof showName !== 'string' && !(showName instanceof String)) {
+      throw new Error('getShowEpisodes show name argument must be a string');
+    }
+
+    const results = await fetch(`${urlRoot}/shows/${showId}/${showName}`).then(res => res.text());
 
     const $ = cheerio.load(results);
     const showTitle = $('td.section_post_header').eq(0).find('b').text();
