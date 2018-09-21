@@ -1,5 +1,5 @@
 eztv
-========
+====
 EZTV API module for Node.js
 
 [![Build Status](https://travis-ci.org/moesalih/node-eztv.svg?branch=master)](https://travis-ci.org/moesalih/node-eztv)
@@ -22,9 +22,11 @@ console.log(firstShow, shows);
 const show = await eztv.getShows({ query: 'big bang' });
 console.log(show);
 
-const [firstEpisode] = await eztv.getShowEpisodes(376, 'sherlock');
-console.log(firstEpisode);
+const showWithEpisodes = await eztv.getShowEpisodes(376, 'sherlock');
+console.log(showWithEpisodes.episodes);
 ```
+
+See [here](https://github.com/amilajack/node-eztv-example) for a clonable and runnable example repo
 
 #### `getShow(options)`
 

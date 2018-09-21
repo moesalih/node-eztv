@@ -16,11 +16,11 @@ export async function getShows(options = {}) {
       if (!url) {
         throw new Error('Unable to find show url');
       }
-      const regex = url.match(/\/shows\/(\d+)\/([^\/]+)/);
+      const regex = url.match(/\/shows\/(\d+)\/([^/]+)/);
       if (!regex) {
         throw new Error(`Unparsed show: ${url}`);
       }
-      const id = parseInt(regex[1]);
+      const id = Number(regex[1]);
       const slug = regex[2];
 
       const title = $(e).find('td').eq(0).text();
@@ -74,7 +74,7 @@ export async function getShowEpisodes(showId, showName) {
       }
 
       const urlRegex = url.match(/\/ep\/(\d+)\/.*/);
-      const id = urlRegex ? parseInt(urlRegex[1]) : undefined;
+      const id = urlRegex ? Number(urlRegex[1]) : undefined;
       const episodeTitle = $(e).find('td').eq(1).find('a')
         .text();
       const titleRegex = episodeTitle.match(/(.+) s?(\d+)[ex](\d+)(e(\d+))?(.*)/i);
@@ -84,9 +84,9 @@ export async function getShowEpisodes(showId, showName) {
       }
 
       const show = titleRegex[1];
-      const seasonNumber = parseInt(titleRegex[2]);
-      const episodeNumber = parseInt(titleRegex[3]);
-      const episodeNumber2 = parseInt(titleRegex[5]);
+      const seasonNumber = Number(titleRegex[2]);
+      const episodeNumber = Number(titleRegex[3]);
+      const episodeNumber2 = Number(titleRegex[5]);
       const extra = titleRegex[6].trim();
       const proper = extra.toLowerCase().includes('proper');
       const repack = extra.toLowerCase().includes('repack');

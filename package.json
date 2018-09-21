@@ -40,6 +40,6 @@
     "lint": "eslint .",
     "preversion": "yarn build",
     "spec": "jest .",
-    "test": "yarn build && jest ."
+    "test": "yarn lint && yarn build && jest ."
   }
 }
