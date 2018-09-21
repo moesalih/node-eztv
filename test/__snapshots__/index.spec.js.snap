@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`EZTV should get show episodes 1`] = `
+Object {
+  "episodes": Array [],
+  "id": Object {
+    "query": "sherlock",
+  },
+  "showTitle": "",
+}
+`;
+
+exports[`EZTV should get shows 1`] = `
+Array [
+  Object {
+    "id": 376,
+    "slug": "sherlock",
+    "status": undefined,
+    "url": "/shows/376/sherlock/",
+  },
+]
+`;

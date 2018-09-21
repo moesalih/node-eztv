@@ -16,9 +16,8 @@ npm install eztv --save
 ```js
 import eztv from 'eztv';
 
-eztv.getShows({ query: 'big bang' }, (error, results) => {
-  // Do stuff...
-});
+const [firstShow] = await eztv.getShows({ query: 'big bang' });
+console.log(firstShow);
 ```
 
 ### Methods
@@ -37,13 +36,13 @@ Returns a list of shows.
 
 Each result is an object:
 
-```js
+```json
 {
-  id: 23,
-  slug: "the-big-bang-theory",
-  status: "break",
-  title: "The Big Bang Theory",
-  url: "/shows/23/the-big-bang-theory/"
+  "id": 23,
+  "slug": "the-big-bang-theory",
+  "status": "break",
+  "title": "The Big Bang Theory",
+  "url": "/shows/23/the-big-bang-theory/"
 }
 ```
 
@@ -60,29 +59,29 @@ Returns a list of episodes for a given show.
 
 **Returns:**
 
-```js
+```json
 {
-  episodes: [...],
-  id: 23,
-  title: "The Big Bang Theory"
+  "episodes": [...],
+  "id": 23,
+  "title": "The Big Bang Theory"
 }
 ```
 
 Each episode is an object:
 
-```js
+```json
 {
-  episodeNumber: 17,
-  episodeNumber2: null,
-  extra: "HDTV x264-LOL",
-  id: 52823,
-  magnet: "magnet:?xt=urn:btih:64DZYZWMUAVLIWJUXGDI...",
-  proper: false,
-  repack: false,
-  seasonNumber: 7,
-  show: "The Big Bang Theory",
-  title: "The Big Bang Theory S07E17 HDTV x264-LOL",
-  torrentURL: "http://piratebaytorrents.info/9715961...",
-  url: "/ep/52823/the-big-bang-theory-s07e17-hdtv-x264-lol/"
+  "episodeNumber": 17,
+  "episodeNumber2": null,
+  "extra": "HDTV x264-LOL",
+  "id": 52823,
+  "magnet": "magnet:?xt=urn:btih:64DZYZWMUAVLIWJUXGDI...",
+  "proper": false,
+  "repack": false,
+  "seasonNumber": 7,
+  "show": "The Big Bang Theory",
+  "title": "The Big Bang Theory S07E17 HDTV x264-LOL",
+  "torrentURL": "http://piratebaytorrents.info/9715961...",
+  "url": "/ep/52823/the-big-bang-theory-s07e17-hdtv-x264-lol/"
 }
 ```
