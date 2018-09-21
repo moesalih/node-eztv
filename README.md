@@ -89,3 +89,11 @@ Each episode is an object:
   "url": "/ep/52823/the-big-bang-theory-s07e17-hdtv-x264-lol/"
 }
 ```
+
+## Development
+```bash
+git clone https://github.com/moesalih/node-eztv
+cd node-eztv
+yarn
+yarn test
+```

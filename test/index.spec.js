@@ -1,7 +1,7 @@
 /* eslint import/no-named-as-default-member: off */
 import EZTV from '..';
 
-jest.setTimeout(10000);
+jest.setTimeout(30000); // 30 seconds
 
 // @TODO
 // Remove properties from results that will change over time.
