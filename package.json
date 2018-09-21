@@ -19,8 +19,8 @@
   },
   "homepage": "https://github.com/moesalih/node-eztv",
   "dependencies": {
-    "request": "^2.34.0",
-    "cheerio": "^0.13.1",
-    "string": "^1.8.0"
+    "request": "^2.88.0",
+    "cheerio": "^1.0.0-rc.2",
+    "string": "^3.3.3"
   }
 }
