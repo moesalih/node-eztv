@@ -59,10 +59,9 @@ export async function getShowEpisodes(showId) {
 
     const $ = cheerio.load(results);
     const showTitle = $('td.section_post_header').eq(0).find('b').text();
-    const episodes = [];
 
     const $episodes = $('table.forum_header_noborder tr[name=hover]');
-    $episodes.each((i, e) => {
+    const episodes = $episodes.map((i, e) => {
       const url = $(e).find('td').eq(1).find('a')
         .attr('href');
 
@@ -94,7 +93,7 @@ export async function getShowEpisodes(showId) {
       const torrentURL = $(e).find('td').eq(2).find('a.download_1')
         .attr('href');
 
-      episodes.push({
+      return {
         id,
         episodeTitle,
         show,
@@ -106,8 +105,8 @@ export async function getShowEpisodes(showId) {
         size,
         magnet,
         torrentURL
-      });
-    });
+      };
+    }).get();
 
     return {
       id: showId,

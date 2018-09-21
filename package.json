@@ -23,6 +23,7 @@
     "isomorphic-fetch": "^2.2.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.1.0",
     "@babel/core": "^7.1.0",
     "@babel/preset-env": "^7.1.0",
     "babel-core": "^7.0.0-bridge",
@@ -32,7 +33,9 @@
     "jest": "^23.6.0"
   },
   "scripts": {
+    "build": "babel index.js --out-dir lib",
     "lint": "eslint .",
-    "test": "jest ."
+    "spec": "jest .",
+    "test": "yarn build && jest ."
   }
 }
