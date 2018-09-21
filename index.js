@@ -11,7 +11,7 @@ const self = module.exports;
 
 self.getShows = (options, callback) => {
   request(`${urlRoot}showlist/`, (error, response, body) => {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       const list = [];
       const $ = cheerio.load(body);
       const $elements = $('table.forum_header_border tr[name=hover]');
@@ -58,7 +58,7 @@ self.getShows = (options, callback) => {
 
 self.getShowEpisodes = (showId, callback) => {
   request(`${urlRoot}shows/${showId}/`, (error, response, body) => {
-    if (!error && response.statusCode == 200) {
+    if (!error && response.statusCode === 200) {
       const result = {
         id: showId,
         episodes: []
@@ -107,4 +107,3 @@ self.getShowEpisodes = (showId, callback) => {
     } else if (callback) callback(new Error('Error getting show episodes'), null);
   });
 };
-
